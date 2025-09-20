@@ -6,58 +6,53 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Nguoi {
-	private String hoTen;
-	private Date ngaySinh;
-	private String ngheNghiep;
+    private String hoTen123;
+    private Date ngaySinh123;
+    private String ngheNghiep123;
 
-	public Nguoi() {
+    public Nguoi() {
 
-	}
+    }
+    public Nguoi(String hoTen123, Date ngaySinh123, String ngheNghiep123) {
+        this.hoTen123 = hoTen123;
+        this.ngaySinh123 = ngaySinh123;
+        this.ngheNghiep123 = ngheNghiep123;
+    }
+    public void nhapThongTin(Scanner sc123) {
+        System.out.print("\tNhap ho ten: ");
+        hoTen123 = sc123.nextLine();
+        System.out.print("\tNhap ngay sinh: ");
+        String strDate123 = sc123.nextLine();
+        ngaySinh123 = strToDate(strDate123);
+        System.out.print("\tNhap nghe nghiep: ");
+        ngheNghiep123 = sc123.nextLine();
+    }
+    private Date strToDate(String strDate123) {
+        Date date123 = null;
+        SimpleDateFormat sdf123 = new SimpleDateFormat("dd-MM-yyyy");
 
-	public Nguoi(String hoTen, Date ngaySinh, String ngheNghiep) {
-		this.hoTen = hoTen;
-		this.ngaySinh = ngaySinh;
-		this.ngheNghiep = ngheNghiep;
-	}
-	public void nhapThongTin(Scanner sc) {
-		System.out.print("\tNhap ho ten: ");
-		hoTen = sc.nextLine();
-		System.out.print("\tNhap ngay sinh: ");
-		String strDate = sc.nextLine();
-		ngaySinh = strToDate(strDate);
-		System.out.print("\tNhap nghe nghiep: ");
-		ngheNghiep = sc.nextLine();
-	}
+        try {
+            date123 = sdf123.parse(strDate123);
+        } catch (ParseException e123) {
+            System.out.println("Loi dinh dang ngay thang!");
+        }
 
-	private Date strToDate(String strDate) {
-		Date date = null;
+        return date123;
+    }
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    public void hienThiThongTin() {
+        System.out.println("\tHo ten: " + hoTen123);
+        System.out.println("\tNgay sinh: " + dateToString(ngaySinh123));
+        System.out.println("\tNghe nghiep: " + ngheNghiep123);
+    }
 
-		try {
-			date = sdf.parse(strDate);
-		} catch (ParseException e) {
-			System.out.println("Loi dinh dang ngay thang!");
-		}
+    private String dateToString(Date date123) {
+        SimpleDateFormat sdf123 = new SimpleDateFormat("dd-MM-yyyy");
+        String strDate123 = sdf123.format(date123);
+        return strDate123;
+    }
 
-		return date;
-	}
-
-	public void hienThiThongTin() {
-		System.out.println("\tHo ten: " + hoTen);
-		System.out.println("\tNgay sinh: " + dateToString(ngaySinh));
-		System.out.println("\tNghe nghiep: " + ngheNghiep);
-	}
-
-	private String dateToString(Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-
-		String strDate = sdf.format(date);
-
-		return strDate;
-	}
-
-	public Date getNgaySinh() {
-		return ngaySinh;
-	}
+    public Date getNgaySinh123() {
+        return ngaySinh123;
+    }
 }
